@@ -42,7 +42,19 @@ SECRET_KEY = _entorno('SECRET_KEY', 'django-insecure-9f3b1a7c2e00000000000000000
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = _entorno('DEBUG', 'True').lower() in ('1', 'true', 'yes', 'si')
 
-ALLOWED_HOSTS = [host.strip() for host in _entorno('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',') if host.strip()]
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in _entorno(
+        'ALLOWED_HOSTS',
+        'localhost,127.0.0.1,.onrender.com',
+    ).split(',')
+    if host.strip()
+]
+
+# Render also provides the exact public hostname for the deployed service.
+RENDER_EXTERNAL_HOSTNAME = _entorno('RENDER_EXTERNAL_HOSTNAME').strip()
+if RENDER_EXTERNAL_HOSTNAME and RENDER_EXTERNAL_HOSTNAME not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
