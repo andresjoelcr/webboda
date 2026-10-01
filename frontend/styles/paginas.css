@@ -3614,7 +3614,7 @@ select.campo__control option {
 @keyframes panel-telon { from { opacity: 0; } to { opacity: 1; } }
 
 @media (max-width: 60rem) {
-  .panel { flex-direction: column; }
+  .panel { width: 100%; min-width: 0; flex-direction: column; }
 
   .panel__menu {
     position: sticky;
@@ -3705,7 +3705,13 @@ select.campo__control option {
   .panel[data-lateral='true'] .panel__lateral { transform: none; }
 
   .panel__nav-boton { flex: none; }
-  .panel__principal { padding: 1.4rem 1.2rem 3rem; }
+  .panel__principal {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+    padding: 1.4rem 1.2rem 3rem;
+  }
   .panel__tarjeta--destacada { grid-column: auto; }
   .panel__cabecera { flex-wrap: wrap; }
   .panel__cabecera-acciones { margin-left: 0; width: 100%; }
@@ -3717,7 +3723,7 @@ select.campo__control option {
   .panel,
   .panel * { box-sizing: border-box; }
 
-  .panel { width: 100%; min-width: 0; overflow-x: clip; }
+  .panel { overflow-x: clip; }
   .panel__principal { width: 100%; max-width: 100%; min-width: 0; padding-right: 1rem; padding-left: 1rem; }
   .panel__caja { width: 100%; min-width: 0; padding: 1rem 0.85rem; }
   .panel__formulario { grid-template-columns: 1fr; }
