@@ -153,9 +153,9 @@ export const HISTORIA = [
 ];
 
 export const GALERIA = [
-  { src: '/static/img_juntos.jpg', pie: 'Juntos, siempre' },
-  { src: '/static/img_novia_sola.png', pie: 'La novia' },
-  { src: '/static/img_novio_solo.png', pie: 'El novio' },
+  { src: '/static/img_juntos.jpeg', pie: 'Juntos, siempre' },
+  { src: '/static/img_novia_sola.jpeg', pie: 'La novia' },
+  { src: '/static/img_novio_solo.jpeg', pie: 'El novio' },
 ];
 
 export const HOTELES = [
