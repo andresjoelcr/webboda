@@ -3714,6 +3714,12 @@ select.campo__control option {
    ancho de la pantalla: buscador a lo ancho, filtros centrados, cada invitado
    en dos lineas y la tabla de confirmaciones convertida en tarjetas. */
 @media (max-width: 34rem) {
+  .panel,
+  .panel * { box-sizing: border-box; }
+
+  .panel { width: 100%; min-width: 0; overflow-x: clip; }
+  .panel__principal { width: 100%; max-width: 100%; min-width: 0; padding-right: 1rem; padding-left: 1rem; }
+  .panel__caja { width: 100%; min-width: 0; padding: 1rem 0.85rem; }
   .panel__formulario { grid-template-columns: 1fr; }
 
   .panel__controles { flex-direction: column; align-items: stretch; }
@@ -3722,12 +3728,16 @@ select.campo__control option {
   .panel__pestanas { justify-content: center; }
   .panel__pestana { flex: 1 1 auto; justify-content: center; }
 
-  .panel__invitado { flex-wrap: wrap; row-gap: 0.5rem; padding: 0.8rem; }
-  .panel__invitado-datos { flex: 1 1 0; }
-  .panel__invitado-contacto { order: 3; flex: 1 1 100%; padding-left: 3.5rem; text-align: left; }
-  .panel__invitado-acciones { order: 4; flex: 1 1 100%; padding-left: 3.5rem; }
-  .panel__invitado-acciones .panel__enlace { flex: 1 1 auto; justify-content: center; }
-  .panel__pastilla { order: 2; margin-left: auto; }
+  .panel__invitados { width: 100%; min-width: 0; }
+  .panel__invitado { flex-wrap: wrap; row-gap: 0.65rem; padding: 0.8rem; min-width: 0; }
+  .panel__invitado-datos { flex: 1 1 calc(100% - 4rem); min-width: 0; }
+  .panel__invitado-datos strong,
+  .panel__invitado-datos small,
+  .panel__invitado-contacto a { white-space: normal; overflow-wrap: anywhere; }
+  .panel__invitado-contacto { order: 3; flex: 1 1 100%; padding-left: 0; text-align: left; }
+  .panel__invitado-acciones { order: 4; flex: 1 1 100%; flex-wrap: wrap; min-width: 0; padding-left: 0; }
+  .panel__invitado-acciones .panel__enlace { flex: 1 1 8rem; min-width: 0; justify-content: center; }
+  .panel__pastilla { order: 2; margin-left: auto; white-space: normal; text-align: center; }
 
   .panel__tarjeta { gap: 0.8rem; padding: 1.1rem 1rem; }
   .anillo { width: 4.2rem; height: 4.2rem; }
