@@ -293,6 +293,17 @@ export function IconoSobre(props) {
   );
 }
 
+export function IconoCompartir(props) {
+  return (
+    <Crear {...props}>
+      <circle cx="18" cy="5" r="3" />
+      <circle cx="6" cy="12" r="3" />
+      <circle cx="18" cy="19" r="3" />
+      <path d="m8.7 10.6 6.6-4.2m-6.6 7 6.6 4.2" />
+    </Crear>
+  );
+}
+
 export function IconoFlecha(props) {
   return (
     <Crear {...props}>
@@ -380,6 +391,7 @@ const ICONOS = {
   usuario: IconoUsuario,
   vestimenta: IconoVestimenta,
   check: IconoCheck,
+  compartir: IconoCompartir,
   waze: IconoWaze,
   flecha: IconoFlecha,
   ojo: IconoOjo,

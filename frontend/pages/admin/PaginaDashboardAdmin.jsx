@@ -537,6 +537,30 @@ function VistaInvitados({ invitados, recargar, notificar }) {
     window.setTimeout(() => setCopiado(''), 2200);
   };
 
+  const compartirEnlace = async (invitado) => {
+    const enlace = new URL('/', window.location.origin);
+    enlace.searchParams.set('token', invitado.token);
+    const enlaceCompleto = enlace.toString();
+    const grupo = invitado.familia ? ` y familia ${invitado.familia}` : '';
+    const mensaje = `Hola, ${invitado.nombre}${grupo}. Aquí está su invitación: ${enlaceCompleto}`;
+
+    if (typeof navigator.share === 'function') {
+      try {
+        await navigator.share({
+          title: 'Invitación a la boda',
+          text: `Hola, ${invitado.nombre}${grupo}. Te invitamos a celebrar con nosotros.`,
+          url: enlaceCompleto,
+        });
+        return;
+      } catch (problema) {
+        // Cerrar el selector del dispositivo es una acción voluntaria, no un error.
+        if (problema.name === 'AbortError') return;
+      }
+    }
+
+    window.open(`https://wa.me/?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
+  };
+
   const conteos = useMemo(
     () => ({
       todos: invitados.length,
@@ -642,16 +666,15 @@ function VistaInvitados({ invitados, recargar, notificar }) {
                     <span>{copiado === invitado.token ? 'Enlace copiado' : 'Copiar invitación'}</span>
                   </button>
 
-                  <a
+                  <button
+                    type="button"
                     className="panel__enlace"
-                    href={`/?token=${encodeURIComponent(invitado.token)}`}
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    title={`Abrir el enlace de ${invitado.nombre}`}
+                    onClick={() => compartirEnlace(invitado)}
+                    title={`Compartir la invitación de ${invitado.nombre}`}
                   >
-                    <Icono nombre="flecha" />
-                    <span>Abrir</span>
-                  </a>
+                    <Icono nombre="compartir" />
+                    <span>Compartir</span>
+                  </button>
 
                   <button
                     type="button"
