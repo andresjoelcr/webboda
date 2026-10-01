@@ -3696,13 +3696,25 @@ select.campo__control option {
     z-index: 40;
     width: 17rem;
     height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
     overflow-y: auto;
+    overscroll-behavior: contain;
     border-right: 1px solid var(--panel-borde);
     box-shadow: 0 0 44px rgba(18, 37, 30, 0.2);
     transform: translateX(-102%);
     transition: transform .32s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .panel[data-lateral='true'] .panel__lateral { transform: none; }
+  .panel__usuario { flex-shrink: 0; }
+  .panel__salir {
+    position: sticky;
+    bottom: env(safe-area-inset-bottom, 0px);
+    z-index: 1;
+    flex-shrink: 0;
+    margin-top: 0.5rem;
+    box-shadow: 0 0 0 8px var(--panel-papel);
+  }
 
   .panel__nav-boton { flex: none; }
   .panel__principal {
